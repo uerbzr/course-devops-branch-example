@@ -1,0 +1,30 @@
+name: Audit NuGet Dependencies
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [ main ]
+
+jobs:
+  audit:
+    runs-on: windows-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    - name: Setup .NET SDK
+      uses: actions/setup-dotnet@v3
+      with:
+        dotnet-version: '9.0.x'  # Adjust to match your solution
+
+    - name: Restore solution
+      run: dotnet restore
+
+    - name: Audit each project
+      shell: pwsh
+      run: |
+        Get-ChildItem -Recurse -Filter *.csproj | ForEach-Object {
+          Write-Host "Auditing $($_.FullName)"
+          dotnet list $_.FullName package --outdated
+        }
