@@ -1,4 +1,6 @@
 #!/bin/bash
+echo ""
+echo "###################################################"
 echo "🔍🔍🔍 Running .NET tests before commit...🔍🔍🔍"
 
 dotnet test --verbosity minimal
