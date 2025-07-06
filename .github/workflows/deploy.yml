@@ -1,0 +1,28 @@
+name: Deploy to IIS Containers
+
+on:
+  push:
+    branches:
+      - staging
+      - production
+
+jobs:
+  deploy:
+    runs-on: self-hosted
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Publish .NET App
+        run: dotnet publish -c Release -o ./publish
+
+      - name: Deploy to IIS Container
+        run: |
+          if ($env:GITHUB_REF -like '*staging') {
+            docker cp ./publish/. iis_staging:C:/inetpub/wwwroot/
+            docker exec iis_staging powershell -Command "iisreset"
+          } elseif ($env:GITHUB_REF -like '*production') {
+            docker cp ./publish/. iis_production:C:/inetpub/wwwroot/
+            docker exec iis_production powershell -Command "iisreset"
+          }
+        shell: pwsh

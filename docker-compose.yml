@@ -1,0 +1,20 @@
+version: '3.9'
+
+services:
+  staging:
+    image: mcr.microsoft.com/windows/servercore/iis:windowsservercore-ltsc2019
+    container_name: iis_staging
+    ports:
+      - "8081:80"
+    volumes:
+      - ./staging-site:/inetpub/wwwroot
+    isolation: process
+
+  production:
+    image: mcr.microsoft.com/windows/servercore/iis:windowsservercore-ltsc2019
+    container_name: iis_production
+    ports:
+      - "8082:80"
+    volumes:
+      - ./production-site:/inetpub/wwwroot
+    isolation: process
