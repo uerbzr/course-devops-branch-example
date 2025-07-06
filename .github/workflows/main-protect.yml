@@ -1,0 +1,14 @@
+on:
+    pull_request:
+      branches: [main]
+  
+  jobs:
+    validate-origin:
+      runs-on: ubuntu-latest
+      steps:
+        - name: Block PRs not from staging
+          if: github.head_ref != 'staging'
+          run: |
+            echo "❌ Only staging can merge into main."
+            exit 1
+  

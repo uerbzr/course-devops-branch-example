@@ -34,7 +34,7 @@ git pull origin staging
 git checkout -b bugfix/add-calculation
 ```
 
-3️⃣ Make & Test Fix
+### 3️⃣ Make & Test Fix
 
 ```bash
 # Edit source code (e.g., AddService.cs)
@@ -42,27 +42,27 @@ dotnet build
 dotnet test
 ```
 
-4️⃣ Stage & Commit Fix
+### 4️⃣ Stage & Commit Fix
 
 ```bash
 git add .
 git commit -m "🐞 Fix: corrected add calculation logic"
 ```
 
-5️⃣ Push to Remote
+### 5️⃣ Push to Remote
 
 ```bash
 git push origin bugfix/add-calculation
 ```
 
-6️⃣ Open PR into staging
+### 6️⃣ Open PR into staging
 
 - Base Branch: staging
 - Head Branch: bugfix/add-calculation
 
 Add description and reviewers
 
-7️⃣ Merge and Clean Up
+### 7️⃣ Merge and Clean Up
 
 ```bash
 git checkout staging
@@ -70,6 +70,6 @@ git pull origin staging
 git branch -d bugfix/add-calculation
 ```
 
-8️⃣ Validate and Promote to main
+### 8️⃣ Validate and Promote to main
 
 - Once tested in staging, create a PR from staging → main
