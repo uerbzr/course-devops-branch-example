@@ -37,6 +37,9 @@ public class CalculatorTests
     [TestCase(9, 9, 18)]
     public void TestCalculatorAddMethod(int a, int b, int expected)
     {
+        //bug
+        if (expected > 100) Assert.Fail();
+
         Calculator calculator = new Calculator();
         int result = calculator.Add(a, b);
         Assert.That(expected, Is.EqualTo(result));
