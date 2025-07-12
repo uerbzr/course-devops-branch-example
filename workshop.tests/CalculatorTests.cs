@@ -19,7 +19,8 @@ public class CalculatorTests
     [TestCase(new int[] { -1, -2, -3 }, -6)]
     [TestCase(new int[] { 0, 0, 0 }, 0)]
     [TestCase(new int[] { }, 0)] // Empty collection
-    [TestCase(new int[] { 10 }, 10)]    
+    [TestCase(new int[] { 10 }, 10)]
+    [TestCase(new int[] { 1,1,1,1,1,1 }, 6)]
     public void Add_WithVariousInputs_ReturnsExpectedSum(int[] input, int expected)
     {
         Calculator calculator = new Calculator();
