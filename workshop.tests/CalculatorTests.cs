@@ -20,6 +20,7 @@ public class CalculatorTests
     [TestCase(new int[] { 0, 0, 0 }, 0)]
     [TestCase(new int[] { }, 0)] // Empty collection
     [TestCase(new int[] { 10 }, 10)]
+    [TestCase(new int[] { 10,10,10,10,10,10 }, 60)]
     public void Add_WithVariousInputs_ReturnsExpectedSum(int[] input, int expected)
     {
         Calculator calculator = new Calculator();
@@ -37,11 +38,8 @@ public class CalculatorTests
     [TestCase(9, 9, 18)]
     public void TestCalculatorAddMethod(int a, int b, int expected)
     {
-        //bug
-        if (expected > 100) Assert.Fail();
-
         Calculator calculator = new Calculator();
         int result = calculator.Add(a, b);
         Assert.That(expected, Is.EqualTo(result));
-    }
+    }   
 }

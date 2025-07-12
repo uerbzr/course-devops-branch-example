@@ -37,4 +37,5 @@ public partial class MainWindow : Window
             ResultText.Text = "⚠️ Please enter valid integers.";
         }
     }
+
 }
